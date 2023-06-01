@@ -18,6 +18,6 @@ module.exports = merge(common, {
     compress: true,
     liveReload: true,
     watchFiles: ['src/'],
-    hot: true
+    hot: true,
   },
 });
