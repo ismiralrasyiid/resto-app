@@ -21,6 +21,7 @@
     "eslint": "^8.41.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "jasmine-ajax": "^4.0.0",
     "jasmine-core": "^4.2.0",
@@ -38,6 +39,9 @@
     "whatwg-fetch": "^3.6.2"
   },
   "dependencies": {
-    "regenerator-runtime": "^0.13.9"
+    "progressbar.js": "^1.1.0",
+    "random-paragraph": "^1.0.4",
+    "regenerator-runtime": "^0.13.9",
+    "toastify-js": "^1.12.0"
   }
 }

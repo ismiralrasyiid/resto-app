@@ -1,0 +1,122 @@
+.restaurantSection {
+    padding: 20px 0;
+    margin-top: 28px;
+    position: relative;
+}
+
+.restaurantSection::before {
+    content: "";
+    width: 280px;
+    height: 2px;
+    background-color: brown;
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 1px;
+}
+
+.restaurantSection h2 {
+    text-align: center;
+}
+
+.restaurantSection ul{
+    display: grid;
+    width: 320px;
+    grid-template-columns: 1fr;
+    margin-inline: auto;
+}
+
+.restaurantSection article {
+    padding: 15px;
+    position: relative;
+    width: 320px;
+}
+
+.restaurantSection article > * {
+    margin-block: 10px;
+}
+
+.restaurantSection article h3 {
+    text-transform: capitalize;
+    line-height: 1.5em;
+}
+
+.restaurantSection article p {
+    line-height: 1.2em;
+    text-align: justify;
+}
+
+.restaurantSection .city {
+    text-transform: capitalize;
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    padding: 7px 10px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    color: white;
+    background-color: brown;
+    font-weight: 700;
+}
+
+.restaurantSection .city > i {
+    margin-right: 5px;
+}
+
+.restaurantSection .rating {
+    padding: 3px;
+    background-color: lightseagreen;
+    color: white;
+    border-radius: 3px;
+    margin-left: 10px;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.restaurantSection .rating > i {
+    margin-right: 3px;
+    font-size: .9rem;
+}
+
+.restaurantSection .isNew {
+    padding: 3px 4px;
+    background-color: rgb(0, 209, 105);
+    color: white;
+    border-radius: 3px;
+    margin-left: 5px;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.restaurantSection article > img {
+    border: 2px solid brown;
+    border-radius: 2px;
+    width: 100%;
+}
+
+@media only screen and (min-width: 420px) {
+    .restaurantSection ul {
+        width: 420px;
+    }
+    
+    .restaurantSection article {
+        width: 420px;
+    }
+}
+
+@media only screen and (min-width: 840px) {
+    .restaurantSection ul {
+        width: 840px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (min-width: 1260px) {
+    .restaurantSection ul {
+        width: 1260px;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

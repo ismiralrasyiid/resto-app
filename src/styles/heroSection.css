@@ -1,0 +1,39 @@
+.heroSection {
+    position: relative;
+    max-height: 900px;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.heroSection p {
+    max-width: 600px;
+    margin-inline: auto;
+} 
+
+.heroSection > img {
+    position: absolute;
+    z-index: -1;
+    filter: brightness(25%);
+}
+
+.heroSection :not(:first-child) {
+    margin: 15px;
+    color: white;
+    text-align: center;
+    line-height: 1.3em;
+}
+
+.heroSection a {
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 15px;
+    background-color: darkgreen;
+}
+
+.heroSection a:hover {
+    text-decoration: underline;
+}

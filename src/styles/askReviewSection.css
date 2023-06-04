@@ -1,0 +1,85 @@
+.askReviewSection {
+    padding: 18px 15px;
+    margin-top: 15px;
+    position: relative;
+}
+
+.askReviewSection::before {
+    content: "";
+    width: 280px;
+    height: 2px;
+    background-color: brown;
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 1px;
+}
+
+.askReviewSection h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.askReviewSection p {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.askReviewSection form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid brown;
+    border-radius: 3px;
+    padding: 10px 10px 20px;
+    margin-block: 25px;
+}
+
+.askReviewSection form > * {
+    margin-block: 5px;
+}
+
+.askReviewSection form > div {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.askReviewSection form > div > * {
+    padding: 15px;
+}
+
+.askReviewSection form > button {
+    margin-top: 15px;
+    border: none;
+    background-color: brown;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.askReviewSection form > button:hover {
+    text-decoration: underline;
+}
+
+@media only screen and (min-width: 798px) {
+    .askReviewSection form {
+        padding-top: 20px;
+        width: 760px;
+        margin-inline: auto;
+    }
+    .askReviewSection form > * {
+        margin-block: 10px;
+    }
+    .askReviewSection form > div {
+        flex-direction: row;
+    }
+    .askReviewSection form > div > label {
+        width: 170px;
+    }
+    .askReviewSection form > div > input {
+        flex-grow: 1;
+    }
+}
