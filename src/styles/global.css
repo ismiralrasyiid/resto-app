@@ -32,13 +32,23 @@ h3 {
 
 .skipToContent {
     position: absolute;
-    top: -5px;
-    left: -5px;
-    transform: translate(-100%, -100%);
-}  
+    padding: 15px;
+    color: white;
+    background-color: darkgreen;
+    border-radius: 3px;
+    top: 0;
+    left: 20px;
+    transform: translateY(-100%);
+    transition: .3s;
+}
+
+.skipToContent:focus {
+    transform: translateY(150%);
+    outline: 1px solid white;
+}
 
 .toTop {
-    position: absolute;
+    position: fixed;
     width: 44px;
     height: 44px;
     bottom: 10px;
@@ -52,4 +62,10 @@ h3 {
     cursor: pointer;
     border-radius: 3px;
     border: 1px solid black;
+}
+
+@media only screen and (min-width: 1350px) {
+    .toTop {
+        right: calc((100vw - 1350px) / 2 + 10px);
+    }
 }
