@@ -1,4 +1,4 @@
-import 'regenerator-runtime'; /* for async await transpile */
+import 'regenerator-runtime';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
@@ -20,4 +20,3 @@ rootContainer.appendChild(Header);
 rootContainer.appendChild(MainContent);
 rootContainer.appendChild(Footer);
 rootContainer.appendChild(ToTopNavigation);
-// console.log(window.location.pathname);

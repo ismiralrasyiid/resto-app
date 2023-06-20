@@ -26,7 +26,7 @@ export default function createRestaurantItem({
 
   const Picture = document.createElement('img');
   Picture.setAttribute('src', pictureId);
-  Picture.setAttribute('alt', `Gambar dari ${name}`);
+  Picture.setAttribute('alt', name);
 
   const Rating = document.createElement('span');
   Rating.classList.add('rating');
