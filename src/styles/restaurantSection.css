@@ -2,6 +2,7 @@
     padding: 20px 0;
     margin-top: 28px;
     position: relative;
+    min-height: 100vh;
 }
 
 .restaurantSection::before {
@@ -20,15 +21,22 @@
     text-align: center;
 }
 
+.restaurantSection > p {
+    font-size: 1.2em;
+    text-align: center;
+    height: calc(100vh - 60px);
+    line-height: calc(100vh - 60px);
+}
+
 .restaurantSection ul{
     display: grid;
     width: 320px;
     grid-template-columns: 1fr;
     margin-inline: auto;
+    gap: 20px;
 }
 
 .restaurantSection article {
-    padding: 15px;
     position: relative;
     width: 320px;
 }
@@ -40,6 +48,7 @@
 .restaurantSection article h3 {
     text-transform: capitalize;
     line-height: 1.5em;
+    text-align: center;
 }
 
 .restaurantSection article p {
@@ -50,8 +59,8 @@
 .restaurantSection .city {
     text-transform: capitalize;
     position: absolute;
-    top: 30px;
-    left: 15px;
+    top: 20px;
+    left: 0;
     padding: 7px 10px;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
@@ -97,7 +106,7 @@
     width: 100%;
 }
 
-@media only screen and (min-width: 420px) {
+@media only screen and (min-width: 440px) {
     .restaurantSection ul {
         width: 420px;
     }
@@ -107,16 +116,16 @@
     }
 }
 
-@media only screen and (min-width: 840px) {
+@media only screen and (min-width: 880px) {
     .restaurantSection ul {
-        width: 840px;
+        width: 860px;
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media only screen and (min-width: 1260px) {
+@media only screen and (min-width: 1320px) {
     .restaurantSection ul {
-        width: 1260px;
+        width: 1300px;
         grid-template-columns: repeat(3, 1fr);
     }
 }

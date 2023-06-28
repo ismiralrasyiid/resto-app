@@ -30,6 +30,11 @@ h3 {
     font-size: 1.2rem;
 }
 
+main {
+    min-height: calc(100vh - 44px);
+    padding-top: 64px;
+}
+
 .skipToContent {
     position: absolute;
     padding: 15px;
@@ -43,7 +48,7 @@ h3 {
 }
 
 .skipToContent:focus {
-    transform: translateY(150%);
+    transform: translateY(170%);
     outline: 1px solid white;
 }
 
@@ -61,7 +66,7 @@ h3 {
     color: white;
     cursor: pointer;
     border-radius: 3px;
-    border: 1px solid black;
+    border: 1px solid white;
 }
 
 @media only screen and (min-width: 1350px) {

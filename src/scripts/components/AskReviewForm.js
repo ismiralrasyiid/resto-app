@@ -1,6 +1,6 @@
 import randomParagraph from 'random-paragraph';
-import Toastify from 'toastify-js';
-import ProgressBar from 'progressbar.js';
+import Notification from './Notification';
+import LineProgressBar from './LineProgressBar';
 import createInput from './utils/createInput';
 import createLabel from './utils/createLabel';
 import createRestaurantItem from './utils/createRestaurantItem';
@@ -37,18 +37,9 @@ Submit.innerText = 'Ajukan';
 
 AskReviewForm.addEventListener('submit', async (event) => {
   event.preventDefault();
-  const LineProgressBar = new ProgressBar.Line('#root', {
-    color: 'brown',
-    duration: 2000,
-    svgStyle: {
-      position: 'fixed',
-      top: '0',
-      left: '0',
-      right: '0',
-    },
-  });
   try {
     LineProgressBar.animate(1);
+
     const description = randomParagraph({ min: 7, max: 10 });
     const responsePicture = await fetch(`https://source.unsplash.com/random/?${encodeURI(event.target[1].value)}`);
     const newReview = {
@@ -67,21 +58,12 @@ AskReviewForm.addEventListener('submit', async (event) => {
 
     ListItem.appendChild(RestaurantItem);
     RestaurantList.appendChild(ListItem);
-    LineProgressBar.destroy();
-    Toastify({
-      text: 'Selamat! Permintaan anda dirilis!',
-      style: {
-        background: 'linear-gradient(to right, rgb(0, 170, 0), rgb(0, 170, 80))',
-      },
-    }).showToast();
+
+    Notification.success();
   } catch {
-    LineProgressBar.destroy();
-    Toastify({
-      text: 'Maaf permintaan anda gagal!',
-      style: {
-        background: 'darkred',
-      },
-    }).showToast();
+    Notification.failure();
+  } finally {
+    LineProgressBar.set(0);
   }
 });
 

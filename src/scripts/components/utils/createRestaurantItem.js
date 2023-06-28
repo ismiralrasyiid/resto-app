@@ -2,13 +2,15 @@ import { FaLocationDot, FaStar } from '../Icons';
 
 export default function createRestaurantItem({
   city,
-  description,
   id,
   name,
   pictureId,
   rating,
   isNew,
 }) {
+  const RestaurantItemWrapper = document.createElement('a');
+  RestaurantItemWrapper.setAttribute('href', `#/detail/${id}`);
+
   const RestaurantItem = document.createElement('article');
   RestaurantItem.setAttribute('id', id);
 
@@ -18,14 +20,11 @@ export default function createRestaurantItem({
   City.appendChild(FaLocationDot);
   City.innerHTML += city;
 
-  const Description = document.createElement('p');
-  Description.innerText = description;
-
   const Name = document.createElement('h3');
   Name.innerText = name;
 
   const Picture = document.createElement('img');
-  Picture.setAttribute('src', pictureId);
+  Picture.setAttribute('src', `https://restaurant-api.dicoding.dev/images/medium/${pictureId}`);
   Picture.setAttribute('alt', name);
 
   const Rating = document.createElement('span');
@@ -46,7 +45,8 @@ export default function createRestaurantItem({
   RestaurantItem.appendChild(Picture);
   RestaurantItem.appendChild(Name);
   RestaurantItem.appendChild(City);
-  RestaurantItem.appendChild(Description);
 
-  return RestaurantItem;
+  RestaurantItemWrapper.appendChild(RestaurantItem);
+
+  return RestaurantItemWrapper;
 }

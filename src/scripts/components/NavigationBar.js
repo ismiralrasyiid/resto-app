@@ -12,10 +12,10 @@ import {
 
 const NavigationBar = document.createElement('nav');
 
-const HomeNavigation = createAnchor({ text: 'Beranda', link: '/', Icon: FaHouse });
+const HomeNavigation = createAnchor({ text: 'Beranda', link: '#/home', Icon: FaHouse });
 HomeNavigation.id = 'homeNavigation';
-const FavoriteNavigation = createAnchor({ text: 'Favorit', link: '#cpl5jpsnuqkkcowlqdz', Icon: FaStar });
-const AskReviewNavigation = createAnchor({ text: 'Ajukan', link: '#askReviewSection', Icon: FaPaperPlane });
+const FavoriteNavigation = createAnchor({ text: 'Favorit', link: '#/favorite', Icon: FaStar });
+const AskReviewNavigation = createAnchor({ text: 'Ajukan', link: '#/askreview', Icon: FaPaperPlane });
 const AboutUsNavigation = createAnchor({
   text: 'Tentang Kami',
   link: 'https://ismiralrasyiid.github.io/',

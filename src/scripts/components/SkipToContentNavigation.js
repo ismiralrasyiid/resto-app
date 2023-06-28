@@ -2,7 +2,7 @@ import createAnchor from './utils/createAnchor';
 
 const SkipToContentNavigation = createAnchor({
   text: 'Menuju ke Konten',
-  link: '#restaurantSection',
+  link: '#mainContent',
 });
 SkipToContentNavigation.classList.add('skipToContent');
 
