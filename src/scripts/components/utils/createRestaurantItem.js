@@ -24,7 +24,7 @@ export default function createRestaurantItem({
   Name.innerText = name;
 
   const Picture = document.createElement('img');
-  Picture.setAttribute('src', `https://restaurant-api.dicoding.dev/images/medium/${pictureId}`);
+  Picture.setAttribute('src', `https://restaurant-api.dicoding.dev/images/small/${pictureId}`);
   Picture.setAttribute('alt', name);
 
   const Rating = document.createElement('span');

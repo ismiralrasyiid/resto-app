@@ -7,21 +7,17 @@ import '../styles/heroSection.css';
 import '../styles/restaurantSection.css';
 import '../styles/askReviewSection.css';
 import '../styles/footer.css';
-import UrlParser from './routes/urlParser';
-import routes from './routes/routes';
+import App from './App';
+import registerSW from './sw/registerSW';
 
 const rootContainer = document.getElementById('root');
 
 window.addEventListener('load', () => {
-  const url = UrlParser.parseActiveUrlWithCombiner();
-  const page = routes[url];
-  rootContainer.appendChild(page);
+  rootContainer.appendChild(App.Page());
+  registerSW();
 });
 
 window.addEventListener('hashchange', () => {
-  const url = UrlParser.parseActiveUrlWithCombiner();
-  const page = routes[url];
-
   rootContainer.innerHTML = null;
-  rootContainer.appendChild(page);
+  rootContainer.appendChild(App.Page());
 });
