@@ -22,5 +22,7 @@ window.addEventListener('load', () => {
 window.addEventListener('hashchange', () => {
   if (UrlParser.isException()) return;
   rootContainer.innerHTML = null;
+  window.blur();
+  window.scroll(0, 0);
   rootContainer.appendChild(App.Page());
 });

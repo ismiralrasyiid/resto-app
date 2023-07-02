@@ -1,15 +1,33 @@
+import IDB from '../../public/data/IDB';
+import LineProgressBar from '../components/LineProgressBar';
+import FavoriteSection from '../components/FavoriteSection';
+import createListElements from '../components/utils/createListElements';
+import createRestaurantItem from '../components/utils/createRestaurantItem';
 import getAppShellWithContents from '../components/utils/getAppShellWithContents';
 
 export default class Favorite extends HTMLElement {
-  connectedCallback() {
+  async connectedCallback() {
     this.setAttribute('role', 'Page');
     this.setAttribute('aria-label', 'Favorite');
 
-    const Heading = document.createElement('h2');
-    Heading.innerText = 'FAVORITE PAGE';
-    getAppShellWithContents(Heading).forEach((element) => {
+    getAppShellWithContents(FavoriteSection).forEach((element) => {
       this.appendChild(element);
     });
+
+    try {
+      LineProgressBar.animate(1);
+
+      const restaurants = await IDB.FavoriteRestaurant.getAll();
+      const RestaurantItems = restaurants.map((restaurant) => createRestaurantItem(restaurant));
+      const RestaurantList = createListElements(...RestaurantItems);
+      RestaurantList.id = 'restaurantList';
+
+      FavoriteSection.replaceChild(RestaurantList, FavoriteSection.children[1]);
+    } catch {
+      Notification.failure();
+    } finally {
+      LineProgressBar.set(0);
+    }
   }
 
   disconnectedCallback() {

@@ -1,4 +1,5 @@
 import API from '../../public/data/API';
+import IDB from '../../public/data/IDB';
 import HeroSection from '../components/HeroSection';
 import LineProgressBar from '../components/LineProgressBar';
 import Notification from '../components/Notification';
@@ -18,11 +19,12 @@ export default class Home extends HTMLElement {
 
     try {
       LineProgressBar.animate(1);
-      await new Promise((resolve) => {
-        setTimeout(resolve, 1000);
-      });
 
       const restaurants = await API.getRestaurants();
+      const newRestaurants = await IDB.NewRestaurant.getAll();
+      newRestaurants.forEach((restaurant) => {
+        restaurants.unshift(restaurant);
+      });
       const RestaurantItems = restaurants.map((restaurant) => createRestaurantItem(restaurant));
       const RestaurantList = createListElements(...RestaurantItems);
       RestaurantList.id = 'restaurantList';

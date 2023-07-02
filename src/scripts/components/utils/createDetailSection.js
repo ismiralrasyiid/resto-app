@@ -1,58 +1,9 @@
+import API from '../../../public/data/API';
 import { FaLocationDot, FaStar } from '../Icons';
+import LineProgressBar from '../LineProgressBar';
+import Notification from '../Notification';
 import createFavoriteButton from './createFavoriteButton';
-
-function createSection({ classList, heading, Content }) {
-  const Section = document.createElement('section');
-  Section.classList.add(classList);
-
-  const Heading = document.createElement('h3');
-  Heading.innerText = heading;
-
-  Section.appendChild(Heading);
-  Section.appendChild(Content);
-
-  return Section;
-}
-
-function createList(items) {
-  const ulElement = document.createElement('ul');
-  items.forEach((item) => {
-    const liElement = document.createElement('li');
-    liElement.innerText = item;
-    ulElement.appendChild(liElement);
-  });
-
-  return ulElement;
-}
-
-function createReviews(items) {
-  const Reviews = document.createElement('section');
-  Reviews.classList.add('reviews');
-  Reviews.setAttribute('aria-label', 'Reviews');
-
-  const Heading = document.createElement('h3');
-  Heading.innerText = 'Review Pelanggan';
-  Reviews.appendChild(Heading);
-
-  items.forEach(({ name, review, date }) => {
-    const Item = document.createElement('article');
-
-    const Name = document.createElement('h4');
-    Name.innerText = name;
-    const Date = document.createElement('p');
-    Date.innerText = date;
-    const Review = document.createElement('p');
-    Review.innerText = review;
-
-    Item.appendChild(Name);
-    Item.appendChild(Date);
-    Item.appendChild(Review);
-
-    Reviews.appendChild(Item);
-  });
-
-  return Reviews;
-}
+import detailSectionHelper from './detailSectionHelper';
 
 export default async function createDetailSection(restaurant) {
   const {
@@ -111,21 +62,21 @@ export default async function createDetailSection(restaurant) {
   Description.innerText = description;
 
   const categoryNames = categories.map((category) => category.name);
-  const Categories = createList(categoryNames);
+  const Categories = detailSectionHelper.createList(categoryNames);
   Categories.classList.add('categories');
   Categories.setAttribute('aria-label', 'Categories');
 
   const foodNames = foods.map((food) => food.name);
-  const FoodList = createList(foodNames);
-  const Foods = createSection({
+  const FoodList = detailSectionHelper.createList(foodNames);
+  const Foods = detailSectionHelper.createSection({
     classList: 'listSection',
     heading: 'Daftar Makanan',
     Content: FoodList,
   });
 
   const drinkNames = drinks.map((drink) => drink.name);
-  const DrinkList = createList(drinkNames);
-  const Drinks = createSection({
+  const DrinkList = detailSectionHelper.createList(drinkNames);
+  const Drinks = detailSectionHelper.createSection({
     classList: 'listSection',
     heading: 'Daftar Minuman',
     Content: DrinkList,
@@ -136,7 +87,27 @@ export default async function createDetailSection(restaurant) {
   const FavoriteButton = await createFavoriteButton(restaurant);
   FavoriteButtonContainer.appendChild(FavoriteButton);
 
-  const Reviews = createReviews(customerReviews);
+  const Reviews = detailSectionHelper.createReviews(customerReviews);
+  const ReviewForm = detailSectionHelper.createAddReviewForm(id);
+  ReviewForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const body = {
+      id,
+      name: event.target[0].value,
+      review: event.target[1].value,
+    };
+    try {
+      LineProgressBar.animate(1);
+      const response = await API.addReview(body);
+      const newReview = detailSectionHelper.createReviewItem(response[response.length - 1]);
+      Reviews.appendChild(newReview);
+      Notification.success('Review ditambahkan!');
+    } catch {
+      Notification.failure('Data ini tidak diproses server!');
+    } finally {
+      LineProgressBar.set(0);
+    }
+  });
 
   DetailSection.appendChild(Picture);
   DetailSection.appendChild(Name);
@@ -147,6 +118,7 @@ export default async function createDetailSection(restaurant) {
   DetailSection.appendChild(Drinks);
   DetailSection.appendChild(FavoriteButtonContainer);
   DetailSection.appendChild(Reviews);
+  DetailSection.appendChild(ReviewForm);
 
   return DetailSection;
 }

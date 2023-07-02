@@ -1,9 +1,14 @@
 import IDB from '../../../public/data/IDB';
+import Notification from '../Notification';
 
 const utils = {
   async renderButton(restaurant) {
-    const isFavorited = !!(await IDB.FavoriteRestaurant.get(restaurant.id));
-    if (isFavorited) return this.renderDeleteFromFavorite(restaurant);
+    try {
+      const isFavorited = !!(await IDB.FavoriteRestaurant.get(restaurant.id));
+      if (isFavorited) return this.renderDeleteFromFavorite(restaurant);
+    } catch {
+      Notification.failure();
+    }
     return this.renderAddToFavorite(restaurant);
   },
 
@@ -11,7 +16,12 @@ const utils = {
     const Button = document.createElement('button');
     Button.innerText = 'Tambahkan ke Favorit';
     Button.addEventListener('click', async () => {
-      await IDB.FavoriteRestaurant.put(restaurant);
+      try {
+        await IDB.FavoriteRestaurant.put(restaurant);
+        Notification.success('Berhasil ditambahkan ke favorit');
+      } catch {
+        Notification.failure();
+      }
       await this.reRenderButton(restaurant);
     });
 
@@ -22,7 +32,12 @@ const utils = {
     const Button = document.createElement('button');
     Button.innerText = 'Hapus dari Favorit';
     Button.addEventListener('click', async () => {
-      await IDB.FavoriteRestaurant.delete(restaurant.id);
+      try {
+        await IDB.FavoriteRestaurant.delete(restaurant.id);
+        Notification.success('Berhasil dihapus dari favorit');
+      } catch {
+        Notification.failure();
+      }
       await this.reRenderButton(restaurant);
     });
 
@@ -31,8 +46,7 @@ const utils = {
 
   async reRenderButton(restaurant) {
     const Container = document.getElementById('favoriteButtonContainer');
-    Container.innerHTML = '';
-    Container.appendChild(await this.renderButton(restaurant));
+    Container.replaceChild(await this.renderButton(restaurant), Container.children[0]);
   },
 };
 

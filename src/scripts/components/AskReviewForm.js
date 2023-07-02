@@ -3,7 +3,7 @@ import Notification from './Notification';
 import LineProgressBar from './LineProgressBar';
 import createInput from './utils/createInput';
 import createLabel from './utils/createLabel';
-import createRestaurantItem from './utils/createRestaurantItem';
+import IDB from '../../public/data/IDB';
 
 const AskReviewForm = document.createElement('form');
 
@@ -41,24 +41,24 @@ AskReviewForm.addEventListener('submit', async (event) => {
     LineProgressBar.animate(1);
 
     const description = randomParagraph({ min: 7, max: 10 });
-    const responsePicture = await fetch(`https://source.unsplash.com/random/?${encodeURI(event.target[1].value)}`);
     const newReview = {
-      id: +new Date(),
+      id: String(+new Date()),
       name: event.target[0].value,
       city: event.target[3].value,
-      pictureId: responsePicture.url,
+      pictureId: Math.round((Math.random() * 10)) + 10,
       rating: (3 + Math.random() * 2).toFixed(1),
       description,
       isNew: true,
+      address: '',
+      categories: [{ name: 'New' }],
+      customerReviews: [{ name: 'New', review: 'New', date: 'New' }],
+      menus: {
+        foods: [{ name: 'New' }],
+        drinks: [{ name: 'New' }],
+      },
     };
 
-    const RestaurantItem = createRestaurantItem(newReview);
-    const ListItem = document.createElement('li');
-    const RestaurantList = document.getElementById('restaurantList');
-
-    ListItem.appendChild(RestaurantItem);
-    RestaurantList.appendChild(ListItem);
-
+    await IDB.NewRestaurant.put(newReview);
     Notification.success();
   } catch {
     Notification.failure();

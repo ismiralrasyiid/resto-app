@@ -1,4 +1,5 @@
 import API from '../../public/data/API';
+import IDB from '../../public/data/IDB';
 import DetailSection from '../components/DetailSection';
 import LineProgressBar from '../components/LineProgressBar';
 import Notification from '../components/Notification';
@@ -17,12 +18,9 @@ export default class Detail extends HTMLElement {
 
     try {
       LineProgressBar.animate(1);
-      await new Promise((resolve) => {
-        setTimeout(resolve, 1000);
-      });
 
       const { id } = UrlParser.parseActiveUrlWithoutCombiner();
-      const restaurant = await API.getRestaurantDetail(id);
+      const restaurant = await IDB.NewRestaurant.get(id) || await API.getRestaurantDetail(id);
       const NewDetailSection = await createDetailSection(restaurant);
 
       this.innerHTML = null;

@@ -93,6 +93,39 @@
     font-weight: bold;
 }
 
+.detailSection > form > * {
+    margin-block: 10px;
+}
+
+.detailSection > form > h3 {
+    text-align: center;
+}
+
+.detailSection > form > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.detailSection > form > div > * {
+    padding: 10px;
+}
+
+.detailSection > form > button {
+    padding: 15px;
+    display: block;
+    margin-inline: auto;
+    font-weight: bold;
+    background-color: brown;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.detailSection > form > button:hover {
+    background-color: rgb(107, 28, 28);
+}
+
 .detailSection .null {
     height: 100vh;
     line-height: 100vh;
