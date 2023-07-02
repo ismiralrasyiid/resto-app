@@ -1,8 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
-const WebpackPwaManifest = require('webpack-pwa-manifest');
 
 module.exports = {
   entry: {
@@ -48,29 +46,6 @@ module.exports = {
           to: path.resolve(__dirname, 'dist/'),
         },
       ],
-    }),
-    new WebpackPwaManifest({
-      filename: 'app.webmanifest',
-      name: 'ByIsmir - Katalog Restoran',
-      short_name: 'ByIsmir',
-      description: 'ByIsmir - Mengulas Berbagai Restoran Indonesia',
-      crossorigin: null,
-      inject: false,
-      fingerprints: false,
-      includeDirectory: false,
-      start_url: '.',
-      publicPath: './',
-      background_color: '#ffffff',
-      icons: [
-        {
-          src: path.resolve(__dirname, 'src/public/icons/icon.png'),
-          sizes: [96, 128, 192, 256, 384, 512],
-          purpose: 'any',
-        },
-      ],
-    }),
-    new WorkboxWebpackPlugin.GenerateSW({
-      swDest: './sw.bundle.js',
     }),
   ],
 };

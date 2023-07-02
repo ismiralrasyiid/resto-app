@@ -11,9 +11,12 @@ const registerSW = async () => {
 
   try {
     await wb.register();
-    Notification.success('Service Worker terdaftar!');
   } catch (error) {
-    Notification.failure('Registrasi Service Worker gagal', error);
+    if (error instanceof TypeError) {
+      Notification.failure('Service Worker disetting hanya pada mode production');
+      return;
+    }
+    Notification.failure('Registrasi Service Worker gagal!');
   }
 };
 

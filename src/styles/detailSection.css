@@ -1,0 +1,107 @@
+.detailSection {
+    border-left: 1px solid brown;
+    border-right: 1px solid brown;
+}
+
+.detailSection > * {
+    padding: 15px;
+}
+
+.detailSection > img {
+    width: 100%;
+    padding: 0;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.detailSection > h2 {
+    text-align: center;
+}
+
+.detailSection > h2 > span{
+    padding: 7px;
+    background-color: lightseagreen;
+    color: white;
+    border-radius: 3px;
+    margin-left: 10px;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.detailSection .categories {
+    display: flex;
+}
+
+.detailSection .categories li {
+    margin-right: 4px;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: brown;
+    color: white;
+}
+
+.detailSection > p {
+    text-align: justify;
+}
+
+.detailSection .city i {
+    color: brown;
+}
+
+.detailSection .listSection > h3 {
+    margin-bottom: 10px;
+}
+
+.detailSection .listSection > ul > li {
+    margin-block: 5px;
+    list-style: disc;
+    margin-left: 15px;
+}
+
+.detailSection #favoriteButtonContainer > button {
+    padding: 15px;
+    display: block;
+    margin-inline: auto;
+    font-weight: bold;
+    background-color: brown;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.detailSection #favoriteButtonContainer > button:hover {
+    background-color: rgb(107, 28, 28);
+}
+
+.detailSection .reviews > h3 {
+    text-align: center;
+}
+
+.detailSection .reviews > article {
+    padding-block: 10px;
+    border-bottom: 1px solid brown;
+}
+
+.detailSection .reviews > article > * {
+    margin-block: 5px;
+}
+
+.detailSection .reviews > article > h4 {
+    font-weight: bold;
+}
+
+.detailSection .null {
+    height: 100vh;
+    line-height: 100vh;
+    text-align: center;
+}
+
+@media only screen and (min-width: 670px) {
+    .detailSection {
+        width: 670px;
+        margin-inline: auto;
+    }
+}

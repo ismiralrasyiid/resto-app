@@ -18,9 +18,10 @@ export default class Home extends HTMLElement {
 
     try {
       LineProgressBar.animate(1);
-      // await new Promise((resolve, error) => {
-      //   setTimeout(error, 3000);
-      // });
+      await new Promise((resolve) => {
+        setTimeout(resolve, 1000);
+      });
+
       const restaurants = await API.getRestaurants();
       const RestaurantItems = restaurants.map((restaurant) => createRestaurantItem(restaurant));
       const RestaurantList = createListElements(...RestaurantItems);

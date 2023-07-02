@@ -8,6 +8,13 @@ const API = {
 
     return restaurants;
   },
+  async getRestaurantDetail(id) {
+    const response = await fetch(`${BaseURL}/detail/${id}`);
+    const responseJson = await response.json();
+    const { restaurant } = responseJson;
+
+    return restaurant;
+  },
 };
 
 export default API;

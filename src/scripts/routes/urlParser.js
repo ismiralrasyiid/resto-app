@@ -24,6 +24,10 @@ const UrlParser = {
       + (splitedUrl.id ? '/:id' : '')
       + (splitedUrl.verb ? `/${splitedUrl.verb}` : '');
   },
+
+  isException() {
+    return window.location.hash === '#mainContent';
+  },
 };
 
 export default UrlParser;
