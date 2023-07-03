@@ -31,7 +31,8 @@ module.exports = merge(common, {
       description: 'ByIsmir - Mengulas Berbagai Restoran Indonesia',
       crossorigin: null,
       publicPath: './',
-      background_color: '#ffffff',
+      background_color: '#a52a2a',
+      theme_color: '#a52a2a',
       icons: [
         {
           src: path.resolve(__dirname, 'src/public/icons/icon.png'),
