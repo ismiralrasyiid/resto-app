@@ -1,12 +1,23 @@
 /* eslint-disable no-restricted-globals */
-import { precache } from 'workbox-precaching';
-import { registerRoute } from 'workbox-routing';
-import { StaleWhileRevalidate } from 'workbox-strategies';
+import 'regenerator-runtime';
+import cacheHelper from './cacheHelper';
 
-precache(self.__WB_MANIFEST);
-
-self.addEventListener('install', () => {
-  self.skipWaiting();
+const cacheName = 'RESTAURANT_CATALOGUE_V2';
+const manifest = self.__WB_MANIFEST;
+const manifestURLs = manifest.map((entry) => {
+  const url = new URL(entry.url, self.location);
+  return url.href;
 });
 
-registerRoute(({ url }) => url.pathname.startsWith('/'), new StaleWhileRevalidate());
+self.addEventListener('install', (event) => {
+  self.skipWaiting();
+  event.waitUntil(cacheHelper.precacheManifest(cacheName, manifestURLs));
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(cacheHelper.deleteOldCache(cacheName));
+});
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(cacheHelper.revalidateCache(cacheName, event.request));
+});

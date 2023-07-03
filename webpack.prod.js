@@ -29,8 +29,9 @@ module.exports = merge(common, {
       name: 'ByIsmir - Katalog Restoran',
       short_name: 'ByIsmir',
       description: 'ByIsmir - Mengulas Berbagai Restoran Indonesia',
-      crossorigin: null,
+      crossorigin: 'use-credentials',
       publicPath: './',
+      start_url: './index.html',
       background_color: '#a52a2a',
       theme_color: '#a52a2a',
       icons: [
