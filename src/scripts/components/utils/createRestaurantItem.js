@@ -9,10 +9,12 @@ export default function createRestaurantItem({
   isNew,
 }) {
   const RestaurantItemWrapper = document.createElement('a');
+  RestaurantItemWrapper.classList.add('detailLink');
   RestaurantItemWrapper.setAttribute('href', `#/detail/${id}`);
 
   const RestaurantItem = document.createElement('article');
   RestaurantItem.setAttribute('id', id);
+  RestaurantItem.classList.add('restaurantItem');
 
   const City = document.createElement('span');
   City.classList.add('city');

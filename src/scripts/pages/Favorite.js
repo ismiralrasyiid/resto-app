@@ -22,7 +22,13 @@ export default class Favorite extends HTMLElement {
       const RestaurantList = createListElements(...RestaurantItems);
       RestaurantList.id = 'restaurantList';
 
-      FavoriteSection.replaceChild(RestaurantList, FavoriteSection.children[1]);
+      if (restaurants.length === 0) {
+        const NoRestaurant = document.createElement('p');
+        NoRestaurant.innerText = 'Tidak ada restoran favorit';
+        FavoriteSection.replaceChild(NoRestaurant, FavoriteSection.children[1]);
+      } else {
+        FavoriteSection.replaceChild(RestaurantList, FavoriteSection.children[1]);
+      }
     } catch {
       Notification.failure();
     } finally {
