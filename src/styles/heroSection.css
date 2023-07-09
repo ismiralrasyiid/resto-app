@@ -1,7 +1,9 @@
 .heroSection {
     position: relative;
-    max-height: 900px;
-    height: calc(100vh - 64px);
+    /* max-height: 900px; */
+    /* height: calc(100vh - 64px); */
+    padding-top: 64px;
+    height: calc(320px + 64px);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -14,8 +16,9 @@
     margin-inline: auto;
 } 
 
-.heroSection > img {
+.heroSection > picture {
     position: absolute;
+    margin-left: -30px;
     z-index: -1;
     filter: brightness(25%);
 }
@@ -36,4 +39,16 @@
 
 .heroSection a:hover {
     text-decoration: underline;
+}
+
+@media only screen and (min-width: 480px) {
+    .heroSection {
+        height: calc(533px + 64px);
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .heroSection {
+        height: calc(900px + 64px);
+    }
 }

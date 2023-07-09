@@ -2,3 +2,4 @@ node_modules
 dist/
 .cache/
 e2e/outputs/
+src/public/images/heros/optimized

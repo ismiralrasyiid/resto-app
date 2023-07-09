@@ -11,6 +11,8 @@ import '../styles/footer.css';
 import App from './App';
 import registerSW from './sw/registerSW';
 import UrlParser from './routes/urlParser';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 const rootContainer = document.getElementById('root');
 

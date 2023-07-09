@@ -1,6 +1,7 @@
 .detailSection {
     border-left: 1px solid brown;
     border-right: 1px solid brown;
+    padding-top: 64px;
 }
 
 .detailSection > * {
