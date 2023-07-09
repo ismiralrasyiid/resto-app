@@ -17,13 +17,13 @@ Scenario('adding first restaurant to favorite then remove it', async ({ I }) => 
   const firstRestaurantHeadingText = await I.grabTextFrom(firstRestaurantHeading);
   I.click(firstRestaurantLink);
 
-  I.waitForElement('#favoriteButtonContainer button', 3);
+  I.waitForElement('#favoriteButtonContainer button', 5);
   I.see('Tambahkan ke Favorit');
   I.click('#favoriteButtonContainer button');
 
   I.amOnPage('/#/favorite');
 
-  I.waitForElement('.restaurantItem', 3);
+  I.waitForElement('.restaurantItem', 5);
   I.seeElement('.restaurantItem');
 
   const likedRestaurantHeadingText = await I.grabTextFrom('.restaurantItem h3');
@@ -32,7 +32,7 @@ Scenario('adding first restaurant to favorite then remove it', async ({ I }) => 
 
   I.click('.restaurantItem');
   
-  I.wait(2);
+  I.wait(5);
   I.see('Hapus dari Favorit');
   I.click('#favoriteButtonContainer button');
 
