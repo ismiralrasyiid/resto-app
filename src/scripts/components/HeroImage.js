@@ -2,7 +2,6 @@ import smallHeroImage from '../../public/images/heros/optimized/hero-image-small
 import mediumHeroImage from '../../public/images/heros/optimized/hero-image-medium.jpg';
 import largeHeroImage from '../../public/images/heros/optimized/hero-image-large.jpg';
 
-
 const ALT_TEXT = 'ByIsmir Hero Image';
 const HeroImage = document.createElement('picture');
 const InnerHTML = `

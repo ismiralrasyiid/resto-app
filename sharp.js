@@ -10,32 +10,32 @@ if (!fs.existsSync(destination)) {
 } else {
   fs.readdirSync(destination, (err, files) => {
     if (err) throw err;
-    for (const file of files) {
-      fs.unlinkSync(path.join(destination, file), (err) => {
-        if (err) throw err;
+    files.forEach((file) => {
+      fs.unlinkSync(path.join(destination, file), (error) => {
+        if (error) throw error;
       });
-    }
+    });
   });
 }
 
 fs.readdirSync(target)
-  .forEach(image => {
+  .forEach((image) => {
     sharp(`${target}/${image}`)
       .resize(1350)
       .toFile(path.resolve(
         __dirname,
-        `${destination}/${image.split('.').slice(0, -1).join('.')}-large.jpg`),
-      );
+        `${destination}/${image.split('.').slice(0, -1).join('.')}-large.jpg`,
+      ));
     sharp(`${target}/${image}`)
       .resize(800)
       .toFile(path.resolve(
         __dirname,
-        `${destination}/${image.split('.').slice(0, -1).join('.')}-medium.jpg`),
-      );
+        `${destination}/${image.split('.').slice(0, -1).join('.')}-medium.jpg`,
+      ));
     sharp(`${target}/${image}`)
       .resize(480)
       .toFile(path.resolve(
         __dirname,
-        `${destination}/${image.split('.').slice(0, -1).join('.')}-small.jpg`),
-      );
+        `${destination}/${image.split('.').slice(0, -1).join('.')}-small.jpg`,
+      ));
   });

@@ -5,11 +5,11 @@ const { default: stubRestaurantDetail } = require('./utils/stubRestaurantDetail'
 
 describe('Adding restaurant to favorite', () => {
   const restaurant = stubRestaurantDetail();
-  const prepareFavoriteButton = async (restaurant) => {
+  const prepareFavoriteButton = async (therestaurant) => {
     const FavoriteButtonContainer = document.createElement('div');
     FavoriteButtonContainer.id = 'favoriteButtonContainer';
 
-    const Button = await createFavoriteButton(restaurant);
+    const Button = await createFavoriteButton(therestaurant);
 
     document.body.appendChild(FavoriteButtonContainer);
     FavoriteButtonContainer.appendChild(Button);
@@ -21,13 +21,12 @@ describe('Adding restaurant to favorite', () => {
     } catch {
       console.log('film sudah dihapus');
     }
-
     document.body.innerHTML = null;
   });
 
   it('should show the add to favorite button when the restaurant has not been favorited before', async () => {
     await prepareFavoriteButton(restaurant);
-    
+
     const AddToFavoriteButton = getElementByText({ text: 'Tambahkan ke Favorit', tag: 'button' });
 
     expect(AddToFavoriteButton).toBeTruthy();
@@ -35,7 +34,7 @@ describe('Adding restaurant to favorite', () => {
 
   it('should not show the delete from favorite button when the restaurant has not been favorited before', async () => {
     await prepareFavoriteButton(restaurant);
-    
+
     const DeleteFromFavoriteButton = getElementByText({ text: 'Hapus dari Favorit', tag: 'button' });
 
     expect(DeleteFromFavoriteButton).toBeFalsy();

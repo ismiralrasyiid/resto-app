@@ -3,9 +3,9 @@
         "browser": true,
         "es2021": true,
         "node": true,
-        "karma": true
+        "jasmine": true
     },
-    "extends": "airbnb-base",
+    "extends": ["airbnb-base", "plugin:codeceptjs/recommended"],
     "overrides": [
     ],
     "parserOptions": {
@@ -13,7 +13,12 @@
         "sourceType": "module"
     },
     "rules": {
-        "import/no-extraneous-dependencies": ["error", {"devDependencies": ["webpack.*.js"]}],
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": ["webpack.*.js", "sharp.js"]
+            }
+        ],
         "no-underscore-dangle": "off"
     }
 }

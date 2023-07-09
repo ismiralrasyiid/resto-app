@@ -5,16 +5,16 @@ const { default: stubRestaurantDetail } = require('./utils/stubRestaurantDetail'
 
 describe('Removing restaurant from favorite', () => {
   const restaurant = stubRestaurantDetail();
-  const prepareFavoriteButton = async (restaurant) => {
+  const prepareFavoriteButton = async (therestaurant) => {
     const FavoriteButtonContainer = document.createElement('div');
     FavoriteButtonContainer.id = 'favoriteButtonContainer';
 
     try {
-      await IDB.FavoriteRestaurant.put(restaurant);
+      await IDB.FavoriteRestaurant.put(therestaurant);
     } catch {
-      console.log('gagal di testing env [Removing restaurant from favorite]!')
+      console.log('gagal di testing env [Removing restaurant from favorite]!');
     }
-    const Button = await createFavoriteButton(restaurant);
+    const Button = await createFavoriteButton(therestaurant);
 
     document.body.appendChild(FavoriteButtonContainer);
     FavoriteButtonContainer.appendChild(Button);

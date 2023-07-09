@@ -31,7 +31,7 @@ Scenario('adding first restaurant to favorite then remove it', async ({ I }) => 
   assert.strictEqual(firstRestaurantHeadingText, likedRestaurantHeadingText);
 
   I.click('.restaurantItem');
-  
+
   I.wait(5);
   I.see('Hapus dari Favorit');
   I.click('#favoriteButtonContainer button');
